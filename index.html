@@ -56,34 +56,33 @@
 
     <!-- 1. HERO & INTRODUCTION VIEW -->
     <section id="home">
-      <div class="hero-section">
-        <h1 class="hero-title">Welcome to GameVerse</h1>
-        <p class="hero-subtitle">Play. Compete. Conquer.</p>
-        <div class="hero-actions">
-          <a href="games.html" class="btn btn-primary">Play Now</a>
+      <div class="hero-wheel-container">
+        <!-- Left Side: Hero Content -->
+        <div class="hero-section-left">
+          <h1 class="hero-title">Welcome to GameVerse</h1>
+          <p class="hero-subtitle">Play. Compete. Conquer.</p>
+          <div class="hero-actions">
+            <a href="#home-games-showcase" class="btn btn-primary">Play Now</a>
+          </div>
         </div>
 
-
-      </div>
-
-      <!-- Spin the Wheel Section -->
-      <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.05); margin: 60px 0;">
-
-      <div class="wheel-section" style="text-align: center;">
-        <h2 class="section-title">Undecided? Spin the Game Wheel!</h2>
-        <p class="page-subtitle" style="margin-bottom: 30px;">Let fate choose your next gaming challenge.</p>
-        <div class="wheel-container-wrapper">
-          <div class="wheel-frame">
-            <div class="wheel-pointer"></div>
-            <canvas id="wheel-canvas" width="400" height="400" class="wheel-canvas"></canvas>
-            <button id="wheel-spin-btn" class="wheel-center-pin"
-              style="cursor: pointer; border: none; font-weight: bold; font-family: inherit;">SPIN</button>
-          </div>
-          <div id="wheel-result-panel"
-            style="margin-top: 10px; display: none; text-align: center; animation: slideInUp 0.3s ease-out;">
-            <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 15px;">Your game: <span id="wheel-game-name"
-                style="color: var(--accent-color); font-weight: 800;">Tic Tac Toe</span></p>
-            <a href="#" id="wheel-play-btn" class="btn btn-primary">Launch Game</a>
+        <!-- Right Side: Spin Wheel -->
+        <div class="wheel-section-right">
+          <h2 class="wheel-section-title">Spin the Game Wheel!</h2>
+          <p class="wheel-section-subtitle">Let fate choose your next challenge.</p>
+          <div class="wheel-container-wrapper">
+            <div class="wheel-frame">
+              <div class="wheel-pointer"></div>
+              <canvas id="wheel-canvas" width="400" height="400" class="wheel-canvas"></canvas>
+              <button id="wheel-spin-btn" class="wheel-center-pin"
+                style="cursor: pointer; border: none; font-weight: bold; font-family: inherit;">SPIN</button>
+            </div>
+            <div id="wheel-result-panel"
+              style="margin-top: 10px; display: none; text-align: center; animation: slideInUp 0.3s ease-out;">
+              <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 15px;">Your game: <span id="wheel-game-name"
+                  style="color: var(--accent-color); font-weight: 800;">Tic Tac Toe</span></p>
+              <a href="#" id="wheel-play-btn" class="btn btn-primary">Launch Game</a>
+            </div>
           </div>
         </div>
       </div>
