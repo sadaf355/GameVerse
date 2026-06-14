@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="GameVerse - A premium, interactive gaming platform featuring classic logic mini-games built in Glassmorphism.">
+  <title>GameVerse | Play. Compete. Conquer.</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="theme-dark">
+  <!-- Dynamic Background Effects -->
+  <div class="background-canvas" id="bg-canvas">
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+    <div class="bg-shape bg-shape-3"></div>
+  </div>
+
+  <!-- Real-time Achievement Unlock Alert Banner -->
+  <div class="achievement-banner" id="achievement-banner">
+    <div class="achievement-banner-icon">🏆</div>
+    <div class="achievement-banner-content">
+      <span class="achievement-banner-label">Achievement Unlocked!</span>
+      <span class="achievement-banner-title">First Victory</span>
+      <span class="achievement-banner-desc">You won your first game match!</span>
+    </div>
+  </div>
+
+  <!-- Username Onboarding Popup Modal -->
+  <div class="modal-overlay" id="username-modal">
+    <div class="modal-content">
+      <h2 class="modal-title">Welcome to GameVerse</h2>
+      <p class="modal-desc">Create your local gaming persona to track your high scores, matches played, and unlockable
+        achievements!</p>
+      <form id="username-form" onsubmit="event.preventDefault();">
+        <div class="form-group">
+          <input type="text" id="username-input" class="form-control" placeholder="Enter gaming tag..." maxlength="15"
+            required autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top: 15px;">Enter Arena</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <!-- Left: Brand Logo -->
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-logo">🎮</span>
+      <span>GameVerse</span>
+    </a>
+
+    <!-- Center: Links menu -->
+    <nav class="nav-menu" id="nav-menu">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="tictactoe.html">TicTacToe</a></li>
+        <li><a href="connectfour.html">ConnectFour</a></li>
+        <li><a href="memory.html">MemoryGame</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+
+    <!-- Right: Theme switch toggle & Profile -->
+    <div class="nav-right-container">
+      <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">☀️</button>
+      <div class="nav-profile-widget" id="nav-profile-widget">
+        <div class="nav-profile-avatar" id="nav-avatar">U</div>
+        <span id="nav-username">User</span>
+      </div>
+    </div>
+
+    <!-- Mobile Hamburger toggle menu -->
+    <div class="burger-menu" id="burger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="main-content">
+
+    <!-- 1. HERO & INTRODUCTION VIEW -->
+    <section id="home">
+      <div class="hero-section">
+        <h1 class="hero-title">Welcome to GameVerse</h1>
+        <p class="hero-subtitle">Play. Compete. Conquer.</p>
+        <div class="hero-actions">
+          <a href="games.html" class="btn btn-primary">Play Now</a>
+        </div>
+
+        <!-- Spotlight Features Grid -->
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">🎮</div>
+            <h3 class="feature-title">3 Algorithmic Games</h3>
+            <p class="feature-desc">Play logic-intensive mini-games.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🏆</div>
+            <h3 class="feature-title">Achievement System</h3>
+            <p class="feature-desc">Unlock 4 unique medals as you play.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <h3 class="feature-title">Glassmorphism UI</h3>
+            <p class="feature-desc">Dynamic Light & Dark modes in a blurred layout.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📈</div>
+            <h3 class="feature-title">Local Stats</h3>
+            <p class="feature-desc">Track wins, scores, and best times.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spin the Wheel Section -->
+      <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.05); margin: 60px 0;">
+
+      <div class="wheel-section" style="text-align: center;">
+        <h2 class="section-title">Undecided? Spin the Game Wheel!</h2>
+        <p class="page-subtitle" style="margin-bottom: 30px;">Let fate choose your next gaming challenge.</p>
+        <div class="wheel-container-wrapper">
+          <div class="wheel-frame">
+            <div class="wheel-pointer"></div>
+            <canvas id="wheel-canvas" width="400" height="400" class="wheel-canvas"></canvas>
+            <button id="wheel-spin-btn" class="wheel-center-pin"
+              style="cursor: pointer; border: none; font-weight: bold; font-family: inherit;">SPIN</button>
+          </div>
+          <div id="wheel-result-panel"
+            style="margin-top: 10px; display: none; text-align: center; animation: slideInUp 0.3s ease-out;">
+            <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 15px;">Your game: <span id="wheel-game-name"
+                style="color: var(--accent-color); font-weight: 800;">Tic Tac Toe</span></p>
+            <a href="#" id="wheel-play-btn" class="btn btn-primary">Launch Game</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Showcase Grid -->
+      <h2 class="section-title">Featured Showcase</h2>
+      <div class="games-grid" id="home-games-showcase">
+        <!-- Showcase cards inject dynamically -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <div class="footer-logo">🎮 GameVerse</div>
+        <p class="footer-about-text">GameVerse is an offline-first browser arcade platform showcasing high-performance
+          mini-games in premium thematic skins. Play instantly in any web browser.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Discord">👾</a>
+          <a href="#" class="social-icon" aria-label="X Twitter">🐦</a>
+          <a href="#" class="social-icon" aria-label="GitHub">🐙</a>
+          <a href="#" class="social-icon" aria-label="YouTube">📺</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>System Portal</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tictactoe.html">TicTacToe</a></li>
+          <li><a href="connectfour.html">ConnectFour</a></li>
+          <li><a href="memory.html">MemoryGame</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Terminal Settings</h4>
+        <p class="footer-about-text" style="margin-bottom: 15px;">Theme changes can be made dynamically using the
+          Sun/Moon toggle in the navigation bar above.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button id="reset-profile-btn" class="btn btn-secondary"
+            style="padding: 6px 12px; font-size: 0.75rem; text-align: left; border: 1px solid var(--accent-secondary); width: fit-content; text-transform: none;">Reset
+            Local Profile Data</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 GameVerse Portal. Open Source under Sandbox protocols.</span>
+      <span>Engine Core: Vanilla HTML5 / CSS3 / ES6</span>
+    </div>
+  </footer>
+
+  <!-- Scripts Loading (Strict Order) -->
+  <script src="js/state.js"></script>
+  <script src="js/wheel.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

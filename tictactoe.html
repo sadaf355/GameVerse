@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play Tic Tac Toe on GameVerse. Challenge the AI or challenge a friend in local PvP.">
+  <title>Tic Tac Toe | GameVerse</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/tictactoe.css">
+</head>
+<body class="theme-dark">
+  <!-- Background Effects -->
+  <div class="background-canvas" id="bg-canvas">
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+    <div class="bg-shape bg-shape-3"></div>
+  </div>
+
+  <!-- Real-time Achievement Unlock Alert Banner -->
+  <div class="achievement-banner" id="achievement-banner">
+    <div class="achievement-banner-icon">🏆</div>
+    <div class="achievement-banner-content">
+      <span class="achievement-banner-label">Achievement Unlocked!</span>
+      <span class="achievement-banner-title">First Victory</span>
+      <span class="achievement-banner-desc">You won your first game match!</span>
+    </div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-logo">🎮</span>
+      <span>GameVerse</span>
+    </a>
+    
+    <nav class="nav-menu" id="nav-menu">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tictactoe.html" class="active">TicTacToe</a></li>
+        <li><a href="connectfour.html">ConnectFour</a></li>
+        <li><a href="memory.html">MemoryGame</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+    
+    <div class="nav-right-container">
+      <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">☀️</button>
+      <div class="nav-profile-widget" id="nav-profile-widget">
+        <div class="nav-profile-avatar" id="nav-avatar">U</div>
+        <span id="nav-username">User</span>
+      </div>
+    </div>
+    
+    <div class="burger-menu" id="burger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Play Arena Container -->
+  <main id="main-content">
+    <div class="play-arena-container">
+      <div class="play-header">
+        <a href="index.html" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.85rem;">← Quit Arena</a>
+        <h2 class="play-title">Tic Tac Toe</h2>
+        <div class="arena-game-stats" id="arena-game-stats" style="font-size: 0.9rem; font-weight: 600; color: var(--accent-secondary);">
+          <!-- Live Records placeholder -->
+        </div>
+      </div>
+      
+      <!-- Playground viewport -->
+      <div class="game-playground" id="game-playground">
+        <div class="ttt-container">
+          <div class="rps-scoreboard" style="padding: 10px 15px;">
+            <div class="rps-score-box">
+              <span style="font-size: 0.75rem; text-transform: uppercase;">X (P1)</span>
+              <span id="ttt-score-x" class="rps-score-val">0</span>
+            </div>
+            <div class="rps-score-box">
+              <span style="font-size: 0.75rem; text-transform: uppercase;">Ties</span>
+              <span id="ttt-score-ties" class="rps-score-val" style="color: var(--text-muted);">0</span>
+            </div>
+            <div class="rps-score-box">
+              <span style="font-size: 0.75rem; text-transform: uppercase;">O (P2)</span>
+              <span id="ttt-score-o" class="rps-score-val" style="color: var(--accent-secondary);">0</span>
+            </div>
+          </div>
+
+          <div class="ttt-status" id="ttt-status">Player X's Turn</div>
+
+          <div class="ttt-grid" id="ttt-grid">
+            <button class="ttt-cell box" data-index="0"></button>
+            <button class="ttt-cell box" data-index="1"></button>
+            <button class="ttt-cell box" data-index="2"></button>
+            <button class="ttt-cell box" data-index="3"></button>
+            <button class="ttt-cell box" data-index="4"></button>
+            <button class="ttt-cell box" data-index="5"></button>
+            <button class="ttt-cell box" data-index="6"></button>
+            <button class="ttt-cell box" data-index="7"></button>
+            <button class="ttt-cell box" data-index="8"></button>
+          </div>
+
+          <button id="ttt-restart-btn" class="btn btn-secondary" style="width: 100%; margin-top: 10px;">Reset Game</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <div class="footer-logo">🎮 GameVerse</div>
+        <p class="footer-about-text">GameVerse is an offline-first browser arcade platform showcasing high-performance mini-games in premium thematic skins. Play instantly in any web browser.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Discord">👾</a>
+          <a href="#" class="social-icon" aria-label="X Twitter">🐦</a>
+          <a href="#" class="social-icon" aria-label="GitHub">🐙</a>
+          <a href="#" class="social-icon" aria-label="YouTube">📺</a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h4>System Portal</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tictactoe.html">TicTacToe</a></li>
+          <li><a href="connectfour.html">ConnectFour</a></li>
+          <li><a href="memory.html">MemoryGame</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Terminal Settings</h4>
+        <p class="footer-about-text" style="margin-bottom: 15px;">Theme changes can be made dynamically using the Sun/Moon toggle in the navigation bar above.</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>&copy; 2026 GameVerse Portal. Open Source under Sandbox protocols.</span>
+      <span>Engine Core: Vanilla HTML5 / CSS3 / ES6</span>
+    </div>
+  </footer>
+
+  <script src="js/state.js"></script>
+  <script src="js/games/tictactoe.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const updateStatsHeader = () => {
+        const statsEl = document.getElementById('arena-game-stats');
+        if (statsEl) {
+          statsEl.textContent = `Record wins: ${window.GameState.stats.tictactoeWins || 0}`;
+        }
+      };
+      
+      updateStatsHeader();
+      window.GameState.onUpdate(updateStatsHeader);
+    });
+  </script>
+</body>
+</html>

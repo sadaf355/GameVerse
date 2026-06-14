@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play Memory Match on GameVerse. Flip cards to reveal matches and beat the clock.">
+  <title>Memory Match | GameVerse</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/memory.css">
+</head>
+<body class="theme-dark">
+  <!-- Background Effects -->
+  <div class="background-canvas" id="bg-canvas">
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+    <div class="bg-shape bg-shape-3"></div>
+  </div>
+
+  <!-- Real-time Achievement Unlock Alert Banner -->
+  <div class="achievement-banner" id="achievement-banner">
+    <div class="achievement-banner-icon">🏆</div>
+    <div class="achievement-banner-content">
+      <span class="achievement-banner-label">Achievement Unlocked!</span>
+      <span class="achievement-banner-title">First Victory</span>
+      <span class="achievement-banner-desc">You won your first game match!</span>
+    </div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-logo">🎮</span>
+      <span>GameVerse</span>
+    </a>
+    
+    <nav class="nav-menu" id="nav-menu">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tictactoe.html">TicTacToe</a></li>
+        <li><a href="connectfour.html">ConnectFour</a></li>
+        <li><a href="memory.html" class="active">MemoryGame</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+    
+    <div class="nav-right-container">
+      <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">☀️</button>
+      <div class="nav-profile-widget" id="nav-profile-widget">
+        <div class="nav-profile-avatar" id="nav-avatar">U</div>
+        <span id="nav-username">User</span>
+      </div>
+    </div>
+    
+    <div class="burger-menu" id="burger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Play Arena Container -->
+  <main id="main-content">
+    <div class="play-arena-container">
+      <div class="play-header">
+        <a href="index.html" class="btn btn-secondary" style="padding: 8px 18px; font-size: 0.85rem;">← Quit Arena</a>
+        <h2 class="play-title">Memory Match</h2>
+        <div class="arena-game-stats" id="arena-game-stats" style="font-size: 0.9rem; font-weight: 600; color: var(--accent-secondary);">
+          <!-- Live Records placeholder -->
+        </div>
+      </div>
+      
+      <!-- Playground viewport -->
+      <div class="game-playground" id="game-playground">
+        <div class="memory-container">
+          <div class="ttt-controls" style="max-width: 500px;">
+            <button id="mem-diff-easy" class="btn btn-secondary" style="flex:1; padding: 8px 12px; font-size: 0.75rem;">Easy (4x3)</button>
+            <button id="mem-diff-med" class="btn btn-primary" style="flex:1; padding: 8px 12px; font-size: 0.75rem;">Medium (4x4)</button>
+            <button id="mem-diff-hard" class="btn btn-secondary" style="flex:1; padding: 8px 12px; font-size: 0.75rem;">Hard (6x4)</button>
+          </div>
+
+          <div class="memory-dashboard">
+            <div>Moves: <span id="mem-moves" style="color: var(--accent-color); font-weight: 800;">0</span></div>
+            <div>Record: <span id="mem-record" style="color: var(--accent-tertiary);">None</span></div>
+            <div>Time: <span id="mem-time" style="color: var(--accent-secondary); font-weight: 800;">0s</span></div>
+          </div>
+
+          <div class="memory-grid memory-grid-medium" id="memory-grid">
+            <!-- Cards injected dynamically here on game load -->
+          </div>
+
+          <button id="mem-restart-btn" class="btn btn-secondary" style="width: 100%; max-width: 500px; margin-top: 10px;">Reset Board</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <div class="footer-logo">🎮 GameVerse</div>
+        <p class="footer-about-text">GameVerse is an offline-first browser arcade platform showcasing high-performance mini-games in premium thematic skins. Play instantly in any web browser.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Discord">👾</a>
+          <a href="#" class="social-icon" aria-label="X Twitter">🐦</a>
+          <a href="#" class="social-icon" aria-label="GitHub">🐙</a>
+          <a href="#" class="social-icon" aria-label="YouTube">📺</a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h4>System Portal</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tictactoe.html">TicTacToe</a></li>
+          <li><a href="connectfour.html">ConnectFour</a></li>
+          <li><a href="memory.html">MemoryGame</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Terminal Settings</h4>
+        <p class="footer-about-text" style="margin-bottom: 15px;">Theme changes can be made dynamically using the Sun/Moon toggle in the navigation bar above.</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>&copy; 2026 GameVerse Portal. Open Source under Sandbox protocols.</span>
+      <span>Engine Core: Vanilla HTML5 / CSS3 / ES6</span>
+    </div>
+  </footer>
+
+  <script src="js/state.js"></script>
+  <script src="js/games/memory.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const updateStatsHeader = () => {
+        const statsEl = document.getElementById('arena-game-stats');
+        if (statsEl) {
+          const record = window.GameState.stats.memoryBestTime;
+          statsEl.textContent = record ? `Personal best: ${record}s` : 'Best: None';
+        }
+      };
+      
+      updateStatsHeader();
+      window.GameState.onUpdate(updateStatsHeader);
+    });
+  </script>
+</body>
+</html>

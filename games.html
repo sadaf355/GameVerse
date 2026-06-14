@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GameVerse Games Arena - Choose from 6 classic browser mini-games.">
+  <title>Games Arena | GameVerse</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="theme-dark">
+  <!-- Background Effects -->
+  <div class="background-canvas" id="bg-canvas">
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+    <div class="bg-shape bg-shape-3"></div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-logo">🎮</span>
+      <span>GameVerse</span>
+    </a>
+    
+    <nav class="nav-menu" id="nav-menu">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tictactoe.html">TicTacToe</a></li>
+        <li><a href="connectfour.html">ConnectFour</a></li>
+        <li><a href="memory.html">MemoryGame</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+    
+    <div class="nav-right-container">
+      <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">☀️</button>
+      <div class="nav-profile-widget" id="nav-profile-widget">
+        <div class="nav-profile-avatar" id="nav-avatar">U</div>
+        <span id="nav-username">User</span>
+      </div>
+    </div>
+    
+    <div class="burger-menu" id="burger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="main-content">
+    <div class="page-title-section">
+      <h1 class="page-title">Games Room</h1>
+      <p class="page-subtitle">Pick a challenge and test your skills</p>
+    </div>
+
+    <!-- Games showcase grid -->
+    <div class="games-grid" id="games-gallery-list">
+      <!-- Cards rendered via JS to populate records -->
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <div class="footer-logo">🎮 GameVerse</div>
+        <p class="footer-about-text">GameVerse is an offline-first browser arcade platform showcasing high-performance mini-games in premium thematic skins. Play instantly in any web browser.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Discord">👾</a>
+          <a href="#" class="social-icon" aria-label="X Twitter">🐦</a>
+          <a href="#" class="social-icon" aria-label="GitHub">🐙</a>
+          <a href="#" class="social-icon" aria-label="YouTube">📺</a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h4>System Portal</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tictactoe.html">TicTacToe</a></li>
+          <li><a href="connectfour.html">ConnectFour</a></li>
+          <li><a href="memory.html">MemoryGame</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Terminal Settings</h4>
+        <p class="footer-about-text" style="margin-bottom: 15px;">Theme changes can be made dynamically using the Sun/Moon toggle in the navigation bar above.</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>&copy; 2026 GameVerse Portal. Open Source under Sandbox protocols.</span>
+      <span>Engine Core: Vanilla HTML5 / CSS3 / ES6</span>
+    </div>
+  </footer>
+
+  <script src="js/state.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.renderGamesListPage) {
+        window.renderGamesListPage();
+        window.GameState.onUpdate(window.renderGamesListPage);
+      }
+    });
+  </script>
+</body>
+</html>

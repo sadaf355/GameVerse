@@ -1,0 +1,66 @@
+/* --- Tic Tac Toe (ttt) styling --- */
+.ttt-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.ttt-controls {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.ttt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.ttt-cell {
+  background: rgba(255, 255, 255, 0.03);
+  border: var(--border-glow);
+  border-radius: var(--border-radius-md);
+  font-size: 3rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  aspect-ratio: 1;
+}
+
+body.theme-light .ttt-cell {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.ttt-cell:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-color);
+  box-shadow: var(--glow-primary);
+}
+
+body.theme-light .ttt-cell:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.ttt-cell.x {
+  color: var(--accent-color);
+}
+
+.ttt-cell.o {
+  color: var(--accent-secondary);
+}
+
+.ttt-status {
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  min-height: 28px;
+}
