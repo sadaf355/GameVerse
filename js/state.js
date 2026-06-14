@@ -24,6 +24,33 @@ window.GameState = {
     { id: 'memory_master', title: 'Memory Master', desc: 'Complete Memory Match in under 45 seconds!', icon: '🧠' }
   ],
 
+  setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/;SameSite=Strict";
+  },
+
+  getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(cname) == 0) {
+        return c.substring(cname.length, c.length);
+      }
+    }
+    return null;
+  },
+
+  eraseCookie(name) {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  },
+
   init() {
     this.load();
     this.applyThemeMode(this.themeMode);
@@ -37,7 +64,7 @@ window.GameState = {
   },
 
   load() {
-    this.username = localStorage.getItem('gv_username') || null;
+    this.username = this.getCookie('gv_username') || null;
     this.themeMode = localStorage.getItem('gv_theme_mode') || 'dark';
     
     const savedStats = localStorage.getItem('gv_stats');
@@ -60,7 +87,11 @@ window.GameState = {
   },
 
   save() {
-    localStorage.setItem('gv_username', this.username || '');
+    if (this.username) {
+      this.setCookie('gv_username', this.username, 365);
+    } else {
+      this.eraseCookie('gv_username');
+    }
     localStorage.setItem('gv_theme_mode', this.themeMode);
     localStorage.setItem('gv_stats', JSON.stringify(this.stats));
     localStorage.setItem('gv_achievements', JSON.stringify(this.unlockedAchievements));
@@ -121,6 +152,7 @@ window.GameState = {
       resetProfileBtn.addEventListener('click', () => {
         if (confirm('Are you sure you want to reset all your stats, records, and unlocked achievements? This cannot be undone.')) {
           localStorage.clear();
+          this.eraseCookie('gv_username');
           window.location.reload();
         }
       });
