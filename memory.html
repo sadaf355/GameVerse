@@ -16,15 +16,6 @@
     <div class="bg-shape bg-shape-3"></div>
   </div>
 
-  <!-- Real-time Achievement Unlock Alert Banner -->
-  <div class="achievement-banner" id="achievement-banner">
-    <div class="achievement-banner-icon">🏆</div>
-    <div class="achievement-banner-content">
-      <span class="achievement-banner-label">Achievement Unlocked!</span>
-      <span class="achievement-banner-title">First Victory</span>
-      <span class="achievement-banner-desc">You won your first game match!</span>
-    </div>
-  </div>
 
   <!-- Header / Navigation Bar -->
   <header class="navbar">
@@ -39,16 +30,11 @@
         <li><a href="tictactoe.html">TicTacToe</a></li>
         <li><a href="connectfour.html">ConnectFour</a></li>
         <li><a href="memory.html" class="active">MemoryGame</a></li>
-        <li><a href="profile.html">Profile</a></li>
       </ul>
     </nav>
     
     <div class="nav-right-container">
       <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">☀️</button>
-      <div class="nav-profile-widget" id="nav-profile-widget">
-        <div class="nav-profile-avatar" id="nav-avatar">U</div>
-        <span id="nav-username">User</span>
-      </div>
     </div>
     
     <div class="burger-menu" id="burger-menu">
@@ -80,7 +66,6 @@
 
           <div class="memory-dashboard">
             <div>Moves: <span id="mem-moves" style="color: var(--accent-color); font-weight: 800;">0</span></div>
-            <div>Record: <span id="mem-record" style="color: var(--accent-tertiary);">None</span></div>
             <div>Time: <span id="mem-time" style="color: var(--accent-secondary); font-weight: 800;">0s</span></div>
           </div>
 
@@ -115,7 +100,6 @@
           <li><a href="tictactoe.html">TicTacToe</a></li>
           <li><a href="connectfour.html">ConnectFour</a></li>
           <li><a href="memory.html">MemoryGame</a></li>
-          <li><a href="profile.html">Profile</a></li>
         </ul>
       </div>
       
@@ -131,21 +115,7 @@
     </div>
   </footer>
 
-  <script src="js/state.js"></script>
   <script src="js/games/memory.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const updateStatsHeader = () => {
-        const statsEl = document.getElementById('arena-game-stats');
-        if (statsEl) {
-          const record = window.GameState.stats.memoryBestTime;
-          statsEl.textContent = record ? `Personal best: ${record}s` : 'Best: None';
-        }
-      };
-      
-      updateStatsHeader();
-      window.GameState.onUpdate(updateStatsHeader);
-    });
-  </script>
+  <script src="js/app.js"></script>
 </body>
 </html>

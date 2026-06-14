@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnHard = document.querySelector('#mem-diff-hard');
   const movesEl = document.querySelector('#mem-moves');
   const timeEl = document.querySelector('#mem-time');
-  const recordEl = document.querySelector('#mem-record');
 
   let difficulty = 'medium'; // 'easy', 'medium', 'hard'
   let cards = [];
@@ -30,16 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (movesEl) movesEl.textContent = '0';
     if (timeEl) timeEl.textContent = '0s';
     
-    updateRecordDisplay();
     updateDifficultyButtons();
     generateCards();
-  };
-
-  const updateRecordDisplay = () => {
-    if (recordEl) {
-      const bestTime = window.GameState.stats.memoryBestTime;
-      recordEl.textContent = bestTime ? `${bestTime}s` : 'None';
-    }
   };
 
   const updateDifficultyButtons = () => {
@@ -124,20 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const endGame = () => {
     clearInterval(timerInterval);
-    
-    const isNewHigh = window.GameState.updateScore('memory', seconds, { 
-      moves: moves,
-      seconds: seconds
-    });
-    
-    window.GameState.recordWin('memory');
 
     if (gridEl) {
       gridEl.innerHTML = `
         <div style="grid-column: 1 / -1; text-align: center; padding: 40px; animation: slideInUp 0.3s;">
           <h2 style="color: var(--accent-color); font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 12px;">🎉 Board Completed!</h2>
           <p style="margin-bottom: 8px;">Completed in <strong>${moves}</strong> moves.</p>
-          <p style="margin-bottom: 24px;">Time: <strong>${seconds}</strong> seconds ${isNewHigh ? '<span style="color: var(--accent-tertiary); font-weight:800;">(NEW RECORD!)</span>' : ''}</p>
+          <p style="margin-bottom: 24px;">Time: <strong>${seconds}</strong> seconds</p>
           <button id="mem-play-again" class="btn btn-primary">Play Again</button>
         </div>
       `;
@@ -173,7 +157,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize
   initGame();
-  
-  // Update record display if stats update
-  window.GameState.onUpdate(updateRecordDisplay);
 });

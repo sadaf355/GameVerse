@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
       scores.o++;
       if (scoreOEl) scoreOEl.innerText = scores.o;
     }
-    window.GameState.recordWin('tictactoe', { vs: 'pvp', result: 'win' });
     disableBoxes();
   };
 
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (statusEl) statusEl.innerText = `🤝 Game was a Draw.`;
     scores.ties++;
     if (scoreTiesEl) scoreTiesEl.innerText = scores.ties;
-    window.GameState.recordGamePlay('tictactoe');
     disableBoxes();
   };
 

@@ -143,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
           statusEl.style.color = '#ffeb3b';
         }
       }
-      window.GameState.recordWin('connectfour', { vs: 'pvp', result: 'win' });
     } else {
       scores.ties++;
       if (statusEl) {
