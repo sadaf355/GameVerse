@@ -100,3 +100,9 @@ body.theme-light .memory-card-front {
   .memory-card-face { font-size: 1.5rem; }
   .memory-card-back { font-size: 1.2rem; }
 }
+
+@media (max-width: 400px) {
+  .memory-grid {
+    gap: 6px;
+  }
+}
